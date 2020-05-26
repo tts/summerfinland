@@ -6,9 +6,7 @@ library(htmltools)
 library(leaflet)
 
 #---------------------------
-#
 # Water vs land in Finland
-#
 #---------------------------
 
 endpoint <- "http://193.167.189.160/igalod/fuseki/ds/query"
@@ -53,9 +51,7 @@ result_geom <- result %>%
 water <- st_as_sf(result_geom, wkt = "geomString", crs = 4326)
 
 #---------------------
-#
 # Summer cottages
-#
 #---------------------
 
 # See 
@@ -72,9 +68,7 @@ px_data <-
 cottages <- as.data.frame(px_data$data, stringsAsFactors = FALSE)
 
 #---------
-#
 # Join
-#
 #---------
 
 water_and_cottages <- left_join(water, cottages, by = c("municipality"="Alue"))
@@ -84,6 +78,9 @@ water_and_cottages <- water_and_cottages %>%
   mutate(cottagesByLandArea = round(cottages_total / land), 1) %>% 
   select(-Vuosi)
 
+#----------
+# Labels
+#-----------
 data_for_labs <- st_drop_geometry(water_and_cottages)
 
 labs_water <- lapply(seq(nrow(data_for_labs)), function(i) {
@@ -103,12 +100,8 @@ labs_cottages <- lapply(seq(nrow(data_for_labs)), function(i) {
 })
 
 
-
-
-#---------------
-#
-# Leafletting
-#
+#--------------
+# Leaflet map
 #---------------
 
 tag.map.title <- tags$style(HTML("
