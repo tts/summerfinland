@@ -115,7 +115,7 @@ tag.map.title <- tags$style(HTML("
     background: #ebf5fb;
     font-weight: bold;
     font-family: verdana;
-    font-size: 20px;
+    font-size: 16px;
   }
 "))
 
