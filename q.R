@@ -108,14 +108,14 @@ tag.map.title <- tags$style(HTML("
   .leaflet-control.map-title { 
     transform: translate(-50%,20%);
     position: fixed !important;
-    left: 50%;
+    left: 40%;
     text-align: center;
     padding-left: 10px; 
     padding-right: 10px; 
     background: #ebf5fb;
     font-weight: bold;
     font-family: verdana;
-    font-size: 16px;
+    font-size: 20px;
   }
 "))
 
