@@ -59,13 +59,13 @@ water <- st_as_sf(result_geom, wkt = "geomString", crs = 4326)
 pxweb_query_list <-
   list("Alue"=c("*"),
        "Tiedot"=c("*"),
-       "Vuosi"=c("2018"))
+       "Vuosi"=c("2019"))
 
 px_data <-
   pxweb_get(url = "http://pxnet2.stat.fi/PXWeb/api/v1/fi/StatFin/asu/rakke/statfin_rakke_pxt_116j.px",
             query = pxweb_query_list)
 
-cottages <- as.data.frame(px_data$data, stringsAsFactors = FALSE)
+cottages <- as.data.frame(px_data, stringsAsFactors = FALSE)
 
 #---------
 # Join
